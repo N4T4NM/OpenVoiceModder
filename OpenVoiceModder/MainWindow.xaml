@@ -1,0 +1,58 @@
+﻿<Window x:Class="OpenVoiceModder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OpenVoiceModder"
+        xmlns:ui="clr-namespace:OpenVoiceModder.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="Black">
+    <Grid>
+        <Grid x:Name="PART_DialogHolder" Panel.ZIndex="200"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+
+                <ui:SoundBoard x:Name="PART_Soundboard"/>
+                <ui:EffectsControl x:Name="PART_Effects" Grid.Column="1" 
+                           BorderThickness="2 0 0 0" BorderBrush="Gray"/>
+            </Grid>
+
+            <Grid Grid.Row="1" x:Name="PART_Menu" Height="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="PART_ToggleMenu" Style="{DynamicResource RoundButton}"
+                        Content="&#xf106;" FontFamily="{DynamicResource FontAwesome}"
+                        HorizontalAlignment="Center" Width="30" Cursor="Hand"
+                        Click="PART_ToggleMenu_Click"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Input / Output" Foreground="White" Margin="10 0 0 0" FontSize="15"/>
+                    <ui:DropdownMenu x:Name="PART_InputDevice" Grid.Row="1"/>
+                    <ui:DropdownMenu x:Name="PART_OutputDevice" Grid.Row="2"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
